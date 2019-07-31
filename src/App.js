@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
+import TextField from './components/TextField'
+
 import styles from './App.module.css';
 
 const fakeRecipes = [
@@ -6,13 +9,9 @@ const fakeRecipes = [
   { id: 2, name: 'Onion Pie' },
 ]
 
-function App() {
-
+const App = () => {
   const [recipes, setRecipes] = useState([])
-  const [recipeName, setRecipeName] = useState('')
   const [isModalVisible, setModalVisible] = useState(false)
-
-  console.log(recipeName)
 
   useEffect(() => {
     setRecipes(fakeRecipes)
@@ -44,12 +43,9 @@ function App() {
               <div onClick={closeModal} className={styles.modalHeaderIcon}>x</div>
             </div>
             <div className={styles.modalForm}>
-              <div className={styles.modalField}>
-                <input onChange={e => {
-                  setRecipeName(e.currentTarget.value)
-                }} value={recipeName} className={styles.modalFieldInput} id="name" />
-                <label className={`${styles.modalFieldLabel} ${recipeName !== '' ? styles.modaFieldLabelFocused : ''}`} htmlFor="name">Recipe name</label>
-              </div>
+              <TextField label="Recipe Name" />
+              <div className={styles.spacer} />
+              <TextField label="Ingredients" />
             </div>
           </div>
         </div>
