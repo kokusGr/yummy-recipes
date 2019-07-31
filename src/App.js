@@ -45,7 +45,7 @@ const App = () => {
             <div className={styles.modalForm}>
               <TextField label="Recipe Name" />
               <div className={styles.spacer} />
-              <TextField label="Ingredients" />
+              <TextField label="Ingredients" helperText="*coma seperated values"/>
             </div>
           </div>
         </div>

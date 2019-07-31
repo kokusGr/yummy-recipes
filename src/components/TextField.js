@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import styles from './TextField.module.css'
 
-const TextField = ({ label }) => {
+const TextField = ({ label, helperText }) => {
 
   const [value, setValue] = useState('')
 
@@ -11,12 +11,15 @@ const TextField = ({ label }) => {
   }
 
   return (
-    <div className={styles.modalField}>
-      <input onChange={onChange} value={value} className={styles.modalFieldInput} id="name" />
-      <label className={`${styles.modalFieldLabel} ${value !== '' ? styles.modaFieldLabelFocused : ''}`}
-        htmlFor="name">
-          {label}
-      </label>
+    <div>
+      <div className={styles.inputContainer}>
+        <input onChange={onChange} value={value} className={styles.input} id="name" />
+        <label className={`${styles.label} ${value !== '' ? styles.labelFilled : ''}`}
+          htmlFor="name">
+            {label}
+        </label>
+      </div>
+      {helperText ? <div className={styles.helperText}>{helperText}</div> : null}
     </div>
   )
 }

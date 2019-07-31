@@ -1,15 +1,15 @@
-.modalField {
+.inputContainer {
     position: relative;
     height: 56px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     display: flex;
     justify-content: flex-end;
     background-color: aliceblue;
     flex-direction: column;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
 
-  .modalFieldLabel {
+  .label {
     position: absolute;
     pointer-events: none;
     left: 8px;
@@ -19,7 +19,7 @@
     color: #000000AA;
   }
 
-  .modalFieldInput {
+  .input {
     height: 32px;
     border: none;
     border-bottom: 1px solid #00000030;
@@ -29,16 +29,23 @@
     background-color: inherit;
   }
 
-  .modalFieldInput:focus {
+  .input:focus {
     outline: none;
     border-color: blue;
   }
 
-  .modalFieldInput:focus ~ .modalFieldLabel {
+  .input:focus ~ .label {
     transform: translateY(-14px) scale(0.75);
     color: blue;
   }
 
-  .modaFieldLabelFocused {
+  .labelFilled {
     transform: translateY(-14px) scale(0.75);
+  }
+
+  .helperText {
+    margin-top: 4px;
+    font-size: 0.8em;
+    color: #00000088;
+    padding-left: 8px;
   }
