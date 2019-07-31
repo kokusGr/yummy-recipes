@@ -63,6 +63,8 @@
   height: 400px;
   background-color: #FFF;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modalHeaderContainer {
@@ -92,8 +94,17 @@
 
 .modalForm {
   padding: 24px;
+  flex: 1;
 }
 
 .spacer {
   margin-top: 12px;
+}
+
+.modalButtonsContainer {
+  height: 72px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 1px solid #00000030;
 }

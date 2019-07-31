@@ -47,6 +47,10 @@ const App = () => {
               <div className={styles.spacer} />
               <TextField label="Ingredients" helperText="*coma seperated values"/>
             </div>
+            <div className={styles.modalButtonsContainer}>
+              <button className={styles.modalSubmitButton}>Add Recipe</button>
+              <button className={styles.modalCancelButton}>Cancel</button>
+            </div>
           </div>
         </div>
       ) : null}
