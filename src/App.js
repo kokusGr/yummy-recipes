@@ -15,6 +15,10 @@ function App() {
     setRecipes(fakeRecipes)
   }, [])
 
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
   return (
     <div className={styles.root}>
       <ul className={styles.list}>
@@ -30,16 +34,18 @@ function App() {
       </ul>
       {isModalVisible ? (
         <div className={styles.modalRoot}>
-          <div onClick={() => {
-            setModalVisible(false)
-          }}
-          className={styles.modalOverlay} />
+          <div onClick={closeModal} className={styles.modalOverlay} />
           <div className={styles.modalContainer}>
-            <h2 className={styles.modalHeader}>Add recipe</h2>
-            <div className={styles.modalField}>
-              <label className={styles.modalFieldLabel}>
-                <input className={styles.modalFieldInput} />
-              </label>
+            <div className={styles.modalHeaderContainer}>
+              <h2 className={styles.modalHeader}>Add a recipe</h2>
+              <div onClick={closeModal} className={styles.modalHeaderIcon}>x</div>
+            </div>
+            <div className={styles.modalForm}>
+              <div className={styles.modalField}>
+                <label className={styles.modalFieldLabel}>
+                  <input className={styles.modalFieldInput} />
+                </label>
+              </div>
             </div>
           </div>
         </div>

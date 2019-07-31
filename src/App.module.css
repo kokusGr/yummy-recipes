@@ -64,3 +64,29 @@
   background-color: #FFF;
   border-radius: 8px;
 }
+
+.modalHeaderContainer {
+  height: 48px;
+  border-bottom: 1px solid #00000030;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.modalHeader {
+  flex: 1;
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+.modalHeaderIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: lightgray;
+  font-size: 1.2em;
+}
+
