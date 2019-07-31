@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import TextField from './components/TextField'
 import Button from './components/Button'
+import AddRecipeModal from './components/AddRecipeModal'
 
 import styles from './App.module.css';
 
@@ -36,25 +36,7 @@ const App = () => {
         </button>
       </ul>
       {isModalVisible ? (
-        <div className={styles.modalRoot}>
-          <div onClick={closeModal} className={styles.modalOverlay} />
-          <div className={styles.modalContainer}>
-            <div className={styles.modalHeaderContainer}>
-              <h2 className={styles.modalHeader}>Add a recipe</h2>
-              <div onClick={closeModal} className={styles.modalHeaderIcon}>x</div>
-            </div>
-            <div className={styles.modalForm}>
-              <TextField label="Recipe Name" />
-              <div className={styles.spacer} />
-              <TextField label="Ingredients" helperText="*coma seperated values"/>
-            </div>
-            <div className={styles.modalButtonsContainer}>
-              <Button type="text">Cancel</Button>
-              <div className={styles.horizontalSpacer} />
-              <Button type="contained">Add Recipe</Button>
-            </div>
-          </div>
-        </div>
+        <AddRecipeModal onClose={closeModal} />
       ) : null}
     </div>
   );
