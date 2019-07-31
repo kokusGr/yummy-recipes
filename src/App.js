@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import TextField from './components/TextField'
+import Button from './components/Button'
 
 import styles from './App.module.css';
 
@@ -48,8 +49,9 @@ const App = () => {
               <TextField label="Ingredients" helperText="*coma seperated values"/>
             </div>
             <div className={styles.modalButtonsContainer}>
-              <button className={styles.modalSubmitButton}>Add Recipe</button>
-              <button className={styles.modalCancelButton}>Cancel</button>
+              <Button type="text">Cancel</Button>
+              <div className={styles.horizontalSpacer} />
+              <Button type="contained">Add Recipe</Button>
             </div>
           </div>
         </div>
