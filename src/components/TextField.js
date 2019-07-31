@@ -1,15 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import styles from './TextField.module.css'
 
-const TextField = ({ label, helperText }) => {
-
-  const [value, setValue] = useState('')
-
-  const onChange = e => {
-    setValue(e.currentTarget.value)
-  }
-
+const TextField = ({ label, helperText, onChange, value }) => {
   return (
     <div>
       <div className={styles.inputContainer}>

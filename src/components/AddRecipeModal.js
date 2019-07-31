@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import TextField from './TextField'
 import Button from './Button'
@@ -6,7 +6,22 @@ import Button from './Button'
 import styles from './AddRecipeModal.module.css'
 
 const AddRecipeModal = props => {
-  const { onClose } = props
+  const { onClose, onSubmit } = props
+
+  const [recipeName, setRecipeName] = useState('')
+  const [ingredients, setIngredients] = useState('')
+
+  const onChangeRecipeName = ({ currentTarget: { value }}) => {
+    setRecipeName(value)
+  }
+
+  const onChangeIngredients = ({ currentTarget: { value }}) => {
+    setIngredients(value)
+  }
+
+  const internalOnSubmit = () => {
+    onSubmit({ name: recipeName, ingredients: ingredients.split(',') })
+  }
 
   return (
     <div className={styles.root}>
@@ -17,14 +32,17 @@ const AddRecipeModal = props => {
           <div onClick={onClose} className={styles.headerIcon}>x</div>
         </div>
         <div className={styles.form}>
-          <TextField label="Recipe Name" />
+          <TextField value={recipeName} onChange={onChangeRecipeName} label="Recipe Name" />
           <div className={styles.spacer} />
-          <TextField label="Ingredients" helperText="*coma seperated values"/>
+          <TextField value={ingredients}
+            onChange={onChangeIngredients}
+            label="Ingredients"
+            helperText="*coma seperated values"/>
         </div>
         <div className={styles.buttonsContainer}>
           <Button onClick={onClose} type="text">Cancel</Button>
           <div className={styles.horizontalSpacer} />
-          <Button type="contained">Add Recipe</Button>
+          <Button onClick={internalOnSubmit} type="contained">Add Recipe</Button>
         </div>
       </div>
     </div>

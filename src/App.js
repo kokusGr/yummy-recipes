@@ -22,6 +22,10 @@ const App = () => {
     setModalVisible(false)
   }
 
+  const addRecipe = ({ name, ingredients }) => {
+    setRecipes([...recipes, { id: recipes.length + 1, name, ingredients }])
+  }
+
   return (
     <div className={styles.root}>
       <ul className={styles.list}>
@@ -36,7 +40,7 @@ const App = () => {
         </button>
       </ul>
       {isModalVisible ? (
-        <AddRecipeModal onClose={closeModal} />
+        <AddRecipeModal onClose={closeModal} onSubmit={addRecipe} />
       ) : null}
     </div>
   );
