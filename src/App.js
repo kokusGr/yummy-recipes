@@ -9,7 +9,10 @@ const fakeRecipes = [
 function App() {
 
   const [recipes, setRecipes] = useState([])
+  const [recipeName, setRecipeName] = useState('')
   const [isModalVisible, setModalVisible] = useState(false)
+
+  console.log(recipeName)
 
   useEffect(() => {
     setRecipes(fakeRecipes)
@@ -42,9 +45,10 @@ function App() {
             </div>
             <div className={styles.modalForm}>
               <div className={styles.modalField}>
-                <label className={styles.modalFieldLabel}>
-                  <input className={styles.modalFieldInput} />
-                </label>
+                <input onChange={e => {
+                  setRecipeName(e.currentTarget.value)
+                }} value={recipeName} className={styles.modalFieldInput} id="name" />
+                <label className={`${styles.modalFieldLabel} ${recipeName !== '' ? styles.modaFieldLabelFocused : ''}`} htmlFor="name">Recipe name</label>
               </div>
             </div>
           </div>
