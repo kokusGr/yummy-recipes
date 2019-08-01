@@ -1,0 +1,48 @@
+.root {
+  padding-left: 16px;
+  list-style: none;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.rootExpanded {
+  border-bottom: 1px solid rgba(0,0,0,0.24);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.headerExpanded {
+  border-bottom: 1px solid gray;
+}
+
+.title {
+  height: 56px;
+  margin: 0;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  flex: 1;
+}
+
+.ingredientsContainer {
+  padding-bottom: 16px;
+}
+
+.ingredientsList {
+  padding: 0;
+  margin: 0;
+}
+
+.ingredientsListItem {
+  list-style-type: none;
+  height: 32px;
+}
+
+.ingredientsTitle {
+  font-size: 1.0em;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import AddRecipeModal from './components/AddRecipeModal'
-import Button from './components/Button'
+import Recipe from './components/Recipe'
 
 import { initDB } from './db'
 
@@ -43,6 +43,11 @@ const App = () => {
     }
   }
 
+  const onEditPressed = recipe => {
+    setEditedRecipe(recipe)
+    setModalVisible(true)
+  }
+
   const editRecipe = ({ name, ingredients }) => {
     if (name !== '' && ingredients !== '' && editedRecipe) {
       const { id } = editedRecipe
@@ -77,35 +82,12 @@ const App = () => {
     <div className={styles.root}>
       <ul className={styles.list}>
         {recipes.map(recipe => (
-          <li key={recipe.id} className={`${styles.recipeRoot} ${expandedRecipe === recipe ? styles.recipeRootExpanded : ''}`} onClick={() => { toggleExpanded(recipe) }}>
-            <div className={`${styles.recipeHeader} ${expandedRecipe === recipe ? styles.recipeHeaderExpanded : ''}`}>
-              <h2 className={styles.recipeTitle} key={recipe.id}>{recipe.name}</h2>
-              {expandedRecipe === recipe ? (
-                <>
-                  <Button type="text" onClick={e => {
-                    e.stopPropagation()
-                    setModalVisible(true)
-                    setEditedRecipe(recipe)
-                  }}>Edit</Button>
-                  <Button type="text" color="red" onClick={() => {
-                    deleteRecipe(recipe.id)
-                  }}>Delete</Button>
-                </>
-              ): null}
-            </div>
-            {expandedRecipe === recipe ? (
-              <>
-                <div className={styles.ingredientsContainer}>
-                  <h3 className={styles.ingredientsTitle}>Ingredients</h3>
-                  <ul className={styles.ingredientsList}>
-                    {recipe.ingredients.map(ingredient => (
-                      <li className={styles.ingredientsListItem} key={ingredient}>{ingredient}</li>
-                    ))}
-                  </ul>
-                </div>
-              </>
-            ) : null}
-          </li>
+          <Recipe key={recipe.id}
+            recipe={recipe}
+            isExpanded={expandedRecipe === recipe}
+            onEditPressed={onEditPressed}
+            onDeletePressed={deleteRecipe}
+            toggleExpanded={toggleExpanded} />
         ))}
         <button onClick={() => {
           setModalVisible(true)
