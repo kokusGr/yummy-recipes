@@ -20,7 +20,7 @@ const AddRecipeModal = props => {
   }
 
   const internalOnSubmit = () => {
-    onSubmit({ name: recipeName, ingredients: ingredients.split(',') })
+    onSubmit({ name: recipeName.trim(), ingredients: ingredients.trim().split(',') })
   }
 
   return (

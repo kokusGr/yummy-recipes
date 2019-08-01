@@ -23,7 +23,10 @@ const App = () => {
   }
 
   const addRecipe = ({ name, ingredients }) => {
-    setRecipes([...recipes, { id: recipes.length + 1, name, ingredients }])
+    // TODO: Proper validation
+    if (name !== '' && ingredients !== '') {
+      setRecipes([...recipes, { id: recipes.length + 1, name, ingredients }])
+    }
   }
 
   return (
