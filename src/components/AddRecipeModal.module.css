@@ -43,17 +43,6 @@
     font-size: 1.4rem;
   }
 
-  .headerIcon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: lightgray;
-    font-size: 1.2em;
-  }
-
   .form {
     padding: 24px;
     flex: 1;

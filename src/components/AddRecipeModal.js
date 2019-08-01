@@ -29,7 +29,6 @@ const AddRecipeModal = props => {
       <div className={styles.container}>
         <div className={styles.headerContainer}>
           <h2 className={styles.header}>Add a recipe</h2>
-          <div onClick={onClose} className={styles.headerIcon}>x</div>
         </div>
         <div className={styles.form}>
           <TextField value={recipeName} onChange={onChangeRecipeName} label="Recipe Name" />
