@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-import Button from './components/Button'
 import AddRecipeModal from './components/AddRecipeModal'
+
+import { initDB } from './db'
 
 import styles from './App.module.css';
 
-const fakeRecipes = [
-  { id: 1, name: 'Spaghetti', ingredients: ['Pasta', 'Tomatoes', 'Garlic', 'Minced meat', 'Olive oil'] },
-  { id: 2, name: 'Onion Pie', ingredients: ['Onions?'] },
-]
-
 const App = () => {
   const [recipes, setRecipes] = useState([])
+  const [db, setDB] = useState(null)
   const [expandedRecipe, setExpandedRecipe] = useState(null)
   const [isModalVisible, setModalVisible] = useState(false)
 
   useEffect(() => {
-    setRecipes(fakeRecipes)
+    initDB().then(db => {
+      db.getAll('recipes').then(data => {
+        setRecipes(data)
+        setDB(db)
+      })
+    }).catch(e => {
+      alert('There was a problem connecting to db, sorry :(')
+      console.error(e)
+    })
   }, [])
 
   const closeModal = () => {
@@ -26,7 +31,13 @@ const App = () => {
   const addRecipe = ({ name, ingredients }) => {
     // TODO: Proper validation
     if (name !== '' && ingredients !== '') {
-      setRecipes([...recipes, { id: recipes.length + 1, name, ingredients }])
+      const newRecipe = { id: recipes.length + 1, name, ingredients }
+      setRecipes([...recipes, newRecipe])
+
+      db.add('recipes', newRecipe).catch(e => {
+        alert('There was a problem adding new recipe to db, sorry :(')
+        console.error(e)
+      })
     }
   }
 
@@ -42,7 +53,7 @@ const App = () => {
     <div className={styles.root}>
       <ul className={styles.list}>
         {recipes.map(recipe => (
-          <li className={`${styles.recipeRoot} ${expandedRecipe === recipe.id ? styles.recipeRootExpanded : ''}`} onClick={() => { toggleExpanded(recipe.id) }}>
+          <li key={recipe.id} className={`${styles.recipeRoot} ${expandedRecipe === recipe.id ? styles.recipeRootExpanded : ''}`} onClick={() => { toggleExpanded(recipe.id) }}>
             <h2 className={`${styles.recipeTitle} ${expandedRecipe === recipe.id ? styles.recipeTitleExpanded : ''}`} key={recipe.id}>{recipe.name}</h2>
             {expandedRecipe === recipe.id ? (
               <div className={styles.ingredientsContainer}>
