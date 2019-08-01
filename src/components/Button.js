@@ -9,12 +9,12 @@ const typeClassName = {
 }
 
 const Button = props => {
-  const { onClick, children, type } = props
+  const { onClick, children, type, color } = props
 
   const className = `${styles.root} ${typeClassName[type]}`
 
   return (
-    <button onClick={onClick} className={className}>{children}</button>
+    <button onClick={onClick} className={className} style={{ color: color }}>{children}</button>
   )
 }
 

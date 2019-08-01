@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import AddRecipeModal from './components/AddRecipeModal'
+import Button from './components/Button'
 
 import { initDB } from './db'
 
@@ -41,6 +42,14 @@ const App = () => {
     }
   }
 
+  const deleteRecipe = id => {
+    setRecipes(recipes.filter(recipe => recipe.id !== id))
+    db.delete('recipes', id).catch(e => {
+      alert('There was a problem deleting a recipe from db, sorry :(')
+      console.error(e)
+    })
+  }
+
   const toggleExpanded = id => {
     if (id === expandedRecipe) {
       setExpandedRecipe(null)
@@ -54,16 +63,28 @@ const App = () => {
       <ul className={styles.list}>
         {recipes.map(recipe => (
           <li key={recipe.id} className={`${styles.recipeRoot} ${expandedRecipe === recipe.id ? styles.recipeRootExpanded : ''}`} onClick={() => { toggleExpanded(recipe.id) }}>
-            <h2 className={`${styles.recipeTitle} ${expandedRecipe === recipe.id ? styles.recipeTitleExpanded : ''}`} key={recipe.id}>{recipe.name}</h2>
+            <div className={`${styles.recipeHeader} ${expandedRecipe === recipe.id ? styles.recipeHeaderExpanded : ''}`}>
+              <h2 className={styles.recipeTitle} key={recipe.id}>{recipe.name}</h2>
+              {expandedRecipe === recipe.id ? (
+                <>
+                  <Button type="text">Edit</Button>
+                  <Button type="text" color="red" onClick={() => {
+                    deleteRecipe(recipe.id)
+                  }}>Delete</Button>
+                </>
+              ): null}
+            </div>
             {expandedRecipe === recipe.id ? (
-              <div className={styles.ingredientsContainer}>
-                <h3 className={styles.ingredientsTitle}>Ingredients</h3>
-                <ul className={styles.ingredientsList}>
-                  {recipe.ingredients.map(ingredient => (
-                    <li className={styles.ingredientsListItem} key={ingredient}>{ingredient}</li>
-                  ))}
-                </ul>
-              </div>
+              <>
+                <div className={styles.ingredientsContainer}>
+                  <h3 className={styles.ingredientsTitle}>Ingredients</h3>
+                  <ul className={styles.ingredientsList}>
+                    {recipe.ingredients.map(ingredient => (
+                      <li className={styles.ingredientsListItem} key={ingredient}>{ingredient}</li>
+                    ))}
+                  </ul>
+                </div>
+              </>
             ) : null}
           </li>
         ))}
