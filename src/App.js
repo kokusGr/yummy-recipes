@@ -11,6 +11,7 @@ const App = () => {
   const [recipes, setRecipes] = useState([])
   const [db, setDB] = useState(null)
   const [expandedRecipe, setExpandedRecipe] = useState(null)
+  const [editedRecipe, setEditedRecipe] = useState(null)
   const [isModalVisible, setModalVisible] = useState(false)
 
   useEffect(() => {
@@ -42,6 +43,20 @@ const App = () => {
     }
   }
 
+  const editRecipe = ({ name, ingredients }) => {
+    if (name !== '' && ingredients !== '' && editedRecipe) {
+      const { id } = editedRecipe
+      const updatedRecipe = { id, name, ingredients }
+      const recipeIndex = recipes.findIndex(recipe => recipe.id === id)
+      setRecipes([...recipes.slice(0, recipeIndex), updatedRecipe, ...recipes.slice(recipeIndex + 1, recipes.length)])
+
+      db.put('recipes', updatedRecipe).catch(e => {
+        alert('There was a problem updating a recipe, sorry :(')
+        console.error(e)
+      })
+    }
+  }
+
   const deleteRecipe = id => {
     setRecipes(recipes.filter(recipe => recipe.id !== id))
     db.delete('recipes', id).catch(e => {
@@ -50,11 +65,11 @@ const App = () => {
     })
   }
 
-  const toggleExpanded = id => {
-    if (id === expandedRecipe) {
+  const toggleExpanded = recipe => {
+    if (recipe === expandedRecipe) {
       setExpandedRecipe(null)
     } else {
-      setExpandedRecipe(id)
+      setExpandedRecipe(recipe)
     }
   }
 
@@ -62,19 +77,23 @@ const App = () => {
     <div className={styles.root}>
       <ul className={styles.list}>
         {recipes.map(recipe => (
-          <li key={recipe.id} className={`${styles.recipeRoot} ${expandedRecipe === recipe.id ? styles.recipeRootExpanded : ''}`} onClick={() => { toggleExpanded(recipe.id) }}>
-            <div className={`${styles.recipeHeader} ${expandedRecipe === recipe.id ? styles.recipeHeaderExpanded : ''}`}>
+          <li key={recipe.id} className={`${styles.recipeRoot} ${expandedRecipe === recipe ? styles.recipeRootExpanded : ''}`} onClick={() => { toggleExpanded(recipe) }}>
+            <div className={`${styles.recipeHeader} ${expandedRecipe === recipe ? styles.recipeHeaderExpanded : ''}`}>
               <h2 className={styles.recipeTitle} key={recipe.id}>{recipe.name}</h2>
-              {expandedRecipe === recipe.id ? (
+              {expandedRecipe === recipe ? (
                 <>
-                  <Button type="text">Edit</Button>
+                  <Button type="text" onClick={e => {
+                    e.stopPropagation()
+                    setModalVisible(true)
+                    setEditedRecipe(recipe)
+                  }}>Edit</Button>
                   <Button type="text" color="red" onClick={() => {
                     deleteRecipe(recipe.id)
                   }}>Delete</Button>
                 </>
               ): null}
             </div>
-            {expandedRecipe === recipe.id ? (
+            {expandedRecipe === recipe ? (
               <>
                 <div className={styles.ingredientsContainer}>
                   <h3 className={styles.ingredientsTitle}>Ingredients</h3>
@@ -96,7 +115,10 @@ const App = () => {
         </button>
       </ul>
       {isModalVisible ? (
-        <AddRecipeModal onClose={closeModal} onSubmit={addRecipe} />
+        <AddRecipeModal onClose={closeModal}
+          onSubmit={editedRecipe ? editRecipe : addRecipe}
+          initialRecipeName={editedRecipe && editedRecipe.name}
+          initialIngredients={editedRecipe && editedRecipe.ingredients.join(', ')} />
       ) : null}
     </div>
   );

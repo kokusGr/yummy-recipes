@@ -5,11 +5,11 @@ import Button from './Button'
 
 import styles from './AddRecipeModal.module.css'
 
-const AddRecipeModal = props => {
-  const { onClose, onSubmit } = props
+const RecipeModal = props => {
+  const { onClose, onSubmit, initialRecipeName, initialIngredients } = props
 
-  const [recipeName, setRecipeName] = useState('')
-  const [ingredients, setIngredients] = useState('')
+  const [recipeName, setRecipeName] = useState(initialRecipeName || '')
+  const [ingredients, setIngredients] = useState(initialIngredients || '')
 
   const onChangeRecipeName = ({ currentTarget: { value }}) => {
     setRecipeName(value)
@@ -23,12 +23,14 @@ const AddRecipeModal = props => {
     onSubmit({ name: recipeName.trim(), ingredients: ingredients.trim().split(',') })
   }
 
+  const title = initialRecipeName ? 'Edit a recipe ' : 'Add a recipe'
+
   return (
     <div className={styles.root}>
       <div onClick={onClose} className={styles.overlay} />
       <div className={styles.container}>
         <div className={styles.headerContainer}>
-          <h2 className={styles.header}>Add a recipe</h2>
+          <h2 className={styles.header}>{title}</h2>
         </div>
         <div className={styles.form}>
           <TextField value={recipeName} onChange={onChangeRecipeName} label="Recipe Name" />
@@ -41,11 +43,11 @@ const AddRecipeModal = props => {
         <div className={styles.buttonsContainer}>
           <Button onClick={onClose} type="text">Cancel</Button>
           <div className={styles.horizontalSpacer} />
-          <Button onClick={internalOnSubmit} type="contained">Add Recipe</Button>
+          <Button onClick={internalOnSubmit} type="contained">{title}</Button>
         </div>
       </div>
     </div>
   )
 }
 
-export default AddRecipeModal
+export default RecipeModal
