@@ -42,14 +42,14 @@ const App = () => {
     <div className={styles.root}>
       <ul className={styles.list}>
         {recipes.map(recipe => (
-          <li className={styles.recipeRoot} onClick={() => { toggleExpanded(recipe.id) }}>
-            <h2 className={styles.recipeTitle} key={recipe.id}>{recipe.name}</h2>
+          <li className={`${styles.recipeRoot} ${expandedRecipe === recipe.id ? styles.recipeRootExpanded : ''}`} onClick={() => { toggleExpanded(recipe.id) }}>
+            <h2 className={`${styles.recipeTitle} ${expandedRecipe === recipe.id ? styles.recipeTitleExpanded : ''}`} key={recipe.id}>{recipe.name}</h2>
             {expandedRecipe === recipe.id ? (
               <div className={styles.ingredientsContainer}>
                 <h3 className={styles.ingredientsTitle}>Ingredients</h3>
                 <ul className={styles.ingredientsList}>
                   {recipe.ingredients.map(ingredient => (
-                    <li className={styles.ingredientListItem} key={ingredient}>{ingredient}</li>
+                    <li className={styles.ingredientsListItem} key={ingredient}>{ingredient}</li>
                   ))}
                 </ul>
               </div>
