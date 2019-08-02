@@ -50,7 +50,7 @@ const RecipeModal = props => {
           <TextField value={ingredients}
             onChange={onChangeIngredients}
             label="Ingredients"
-            helperText="*coma seperated values"/>
+            helperText="*coma separated values"/>
         </div>
         <div className={styles.buttonsContainer}>
           <Button onClick={onClose} type="text">Cancel</Button>
