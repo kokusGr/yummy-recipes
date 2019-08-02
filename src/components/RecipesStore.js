@@ -31,7 +31,8 @@ const RecipesStore = ({ children,  db }) => {
     }
   }
 
-  const editRecipe = ({ name, ingredients, id }) => {
+  const editRecipe = (id, { name, ingredients }) => {
+    console.log('Editing', { name, ingredients, id })
     if (name !== '' && ingredients !== '' && id) {
       const updatedRecipe = { id, name, ingredients }
       const recipeIndex = recipes.findIndex(recipe => recipe.id === id)
