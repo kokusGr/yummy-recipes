@@ -10,9 +10,9 @@ const Transition = ({ children, timeout, isActive }) => {
       timer.current && clearTimeout(timer.current)
       timer.current = null
 
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         setActiveClassName('enter')
-      })
+      }, 10)
     } else if (activeClassName && !isActive && !timer.current) {
       setActiveClassName('exit')
       timer.current = setTimeout(() => {
