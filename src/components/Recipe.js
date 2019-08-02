@@ -18,7 +18,7 @@ const Recipe = props => {
   }
 
   return (
-    <li className={`${styles.root} ${isExpanded ? styles.rootExpanded : ''}`}
+    <li className={styles.root}
       onClick={() => { toggleExpanded(recipe) }}>
     <div className={`${styles.header} ${isExpanded ? styles.headerExpanded : ''}`}>
       <h2 className={`${styles.title} ${isExpanded ? styles.titleExpanded : ''}`}>{recipe.name}</h2>
