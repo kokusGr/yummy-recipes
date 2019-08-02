@@ -38,6 +38,9 @@ const App = () => {
 
   return (
     <RecipesStore db={db}>
+      <header className={styles.appHeader}>
+        <h1 className={styles.appTitle}>Yummy Recipes</h1>
+      </header>
       <div className={styles.root}>
         <RecipesList onEditPressed={onEditPressed} onAddPressed={openModal} />
         {isModalVisible ? (
