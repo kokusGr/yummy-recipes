@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 
+import Button from './Button'
 import { RecipesContext } from './RecipesStore'
 import Recipe from './Recipe'
 
@@ -30,9 +31,11 @@ const RecipesList = props => {
           onDeletePressed={deleteRecipe}
           toggleExpanded={toggleExpanded} />
       ))}
-      <button onClick={onAddPressed} className={styles.button}>
-        Add recipe
-      </button>
+      <div className={styles.buttonContainer}>
+        <Button onClick={onAddPressed} type="contained" size="big">
+          Add a recipe
+        </Button>
+      </div>
     </ul>
   )
 }
