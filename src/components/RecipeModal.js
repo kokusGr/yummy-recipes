@@ -41,7 +41,6 @@ const RecipeModal = props => {
 
   return (
     <div className={styles.root}>
-      <div onClick={onClose} className={styles.overlay} />
       <div className={styles.container}>
         <div className={styles.headerContainer}>
           <h2 className={styles.header}>{title}</h2>

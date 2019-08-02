@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import RecipeModal from './components/RecipeModal'
 import RecipesList from './components/RecipesList'
 import RecipesStore from './components/RecipesStore'
+import Transition from './components/Transition'
 
 import { initDB } from './db'
 
@@ -43,10 +44,16 @@ const App = () => {
       </header>
       <div className={styles.root}>
         <RecipesList onEditPressed={onEditPressed} onAddPressed={openModal} />
-        {isModalVisible ? (
-          <RecipeModal onClose={closeModal}
-            recipe={editedRecipe} />
-        ) : null}
+        <Transition isActive={isModalVisible} timeout={300}>
+          {activeClassName => (
+            <>
+              <div onClick={closeModal} className={`${styles.overlay} ${activeClassName === 'enter' ? styles.overlayEnter : ''}`} />
+              <div className={`${styles.modalContainer} ${activeClassName === 'enter' ? styles.modalContainerEnter : ''}`}>
+                <RecipeModal onClose={closeModal} recipe={editedRecipe} />
+              </div>
+            </>
+          )}
+        </Transition>
       </div>
     </RecipesStore>
   );

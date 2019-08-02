@@ -17,3 +17,31 @@
   font-size: 1.6em;
   color: var(--accent-color-dark);
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.overlayEnter {
+  opacity: 1;
+}
+
+.modalContainer {
+  transform: scale(0, 0);
+  opacity: 0;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-property: transform, opacity;
+}
+
+.modalContainerEnter {
+  opacity: 1;
+  transform: scale(1, 1);
+}
