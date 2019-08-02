@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "794aa6f9c94a172d9389d59d006762ef",
+    "revision": "e2994eefc843ef885c6a3bf751cd746c",
     "url": "/yummy-recipes/index.html"
   },
   {
-    "revision": "945f0d6c3e5dbb19f0ee",
-    "url": "/yummy-recipes/static/css/main.4da17466.chunk.css"
+    "revision": "56a7a7e6488e83e4c273",
+    "url": "/yummy-recipes/static/css/main.31e8c77e.chunk.css"
   },
   {
     "revision": "5da88d8f7ff1e792b428",
     "url": "/yummy-recipes/static/js/2.6f3fcfff.chunk.js"
   },
   {
-    "revision": "945f0d6c3e5dbb19f0ee",
-    "url": "/yummy-recipes/static/js/main.4b094986.chunk.js"
+    "revision": "56a7a7e6488e83e4c273",
+    "url": "/yummy-recipes/static/js/main.0715bcb6.chunk.js"
   },
   {
     "revision": "c19622047c6b42475bf5",

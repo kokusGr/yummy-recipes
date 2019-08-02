@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/yummy-recipes/static/css/main.4da17466.chunk.css",
-    "main.js": "/yummy-recipes/static/js/main.4b094986.chunk.js",
-    "main.js.map": "/yummy-recipes/static/js/main.4b094986.chunk.js.map",
+    "main.css": "/yummy-recipes/static/css/main.31e8c77e.chunk.css",
+    "main.js": "/yummy-recipes/static/js/main.0715bcb6.chunk.js",
+    "main.js.map": "/yummy-recipes/static/js/main.0715bcb6.chunk.js.map",
     "runtime~main.js": "/yummy-recipes/static/js/runtime~main.b123fec7.js",
     "runtime~main.js.map": "/yummy-recipes/static/js/runtime~main.b123fec7.js.map",
     "static/js/2.6f3fcfff.chunk.js": "/yummy-recipes/static/js/2.6f3fcfff.chunk.js",
     "static/js/2.6f3fcfff.chunk.js.map": "/yummy-recipes/static/js/2.6f3fcfff.chunk.js.map",
     "index.html": "/yummy-recipes/index.html",
-    "precache-manifest.8b768a940b0a221c0f8363ebfb0560ac.js": "/yummy-recipes/precache-manifest.8b768a940b0a221c0f8363ebfb0560ac.js",
+    "precache-manifest.cc5f69d1e0a427af611e5abc75f42132.js": "/yummy-recipes/precache-manifest.cc5f69d1e0a427af611e5abc75f42132.js",
     "service-worker.js": "/yummy-recipes/service-worker.js",
-    "static/css/main.4da17466.chunk.css.map": "/yummy-recipes/static/css/main.4da17466.chunk.css.map"
+    "static/css/main.31e8c77e.chunk.css.map": "/yummy-recipes/static/css/main.31e8c77e.chunk.css.map"
   }
 }
