@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import TextField from './TextField'
 import Button from './Button'
+import { RecipesContext } from './RecipesStore'
 
-import styles from './AddRecipeModal.module.css'
+import styles from './RecipeModal.module.css'
 
 const RecipeModal = props => {
-  const { onClose, onSubmit, initialRecipeName, initialIngredients } = props
+  const { onClose, recipe } = props
 
-  const [recipeName, setRecipeName] = useState(initialRecipeName || '')
-  const [ingredients, setIngredients] = useState(initialIngredients || '')
+  const { editRecipe, addRecipe } = useContext(RecipesContext)
+
+  const initialRecipeName = recipe ? recipe.name : ''
+  const initialIngredients = recipe ? recipe.ingredients.join(', ') : ''
+
+  const [recipeName, setRecipeName] = useState(initialRecipeName)
+  const [ingredients, setIngredients] = useState(initialIngredients)
 
   const onChangeRecipeName = ({ currentTarget: { value }}) => {
     setRecipeName(value)
@@ -19,11 +25,19 @@ const RecipeModal = props => {
     setIngredients(value)
   }
 
-  const internalOnSubmit = () => {
-    onSubmit({ name: recipeName.trim(), ingredients: ingredients.trim().split(',') })
+  const onSubmit = () => {
+    const newRecipe = { name: recipeName.trim(), ingredients: ingredients.trim().split(',')}
+
+    if (recipe) {
+      editRecipe(recipe.id, newRecipe)
+    } else {
+      addRecipe(newRecipe)
+    }
+
+    onClose()
   }
 
-  const title = initialRecipeName ? 'Edit a recipe ' : 'Add a recipe'
+  const title = recipe ? 'Edit a recipe ' : 'Add a recipe'
 
   return (
     <div className={styles.root}>
@@ -43,7 +57,7 @@ const RecipeModal = props => {
         <div className={styles.buttonsContainer}>
           <Button onClick={onClose} type="text">Cancel</Button>
           <div className={styles.horizontalSpacer} />
-          <Button onClick={internalOnSubmit} type="contained">{title}</Button>
+          <Button onClick={onSubmit} type="contained">{title}</Button>
         </div>
       </div>
     </div>
