@@ -12,7 +12,7 @@ const Transition = ({ children, timeout, isActive }) => {
 
       setTimeout(() => {
         setActiveClassName('enter')
-      }, 10)
+      }, 50)
     } else if (activeClassName && !isActive && !timer.current) {
       setActiveClassName('exit')
       timer.current = setTimeout(() => {

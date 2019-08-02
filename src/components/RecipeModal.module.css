@@ -3,6 +3,7 @@
   border-radius: 4px;
   display: flex;
   flex-direction: column;
+  pointer-events: all;
 }
 
 @media(min-width: 650px) {
