@@ -1,5 +1,4 @@
 .root {
-  padding-left: 16px;
   list-style: none;
   margin-top: 8px;
   cursor: pointer;
@@ -10,13 +9,24 @@
 }
 
 .header {
+  padding-left: 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+.header:hover {
+  background-color: var(--accent-color-light);
+}
+
+.header:hover .title {
+  color: var(--accent-color-dark);
+}
+
 .headerExpanded {
   border-bottom: 1px solid gray;
+  background-color: var(--accent-color-light);
+  color: var(--accent-color-dark);
 }
 
 .title {
@@ -29,13 +39,22 @@
   flex: 1;
 }
 
+.titleExpanded {
+  color: var(--accent-color-dark);
+}
+
 .ingredientsContainer {
   padding-bottom: 16px;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ingredientsList {
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 .ingredientsListItem {

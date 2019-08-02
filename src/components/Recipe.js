@@ -21,10 +21,10 @@ const Recipe = props => {
     <li className={`${styles.root} ${isExpanded ? styles.rootExpanded : ''}`}
       onClick={() => { toggleExpanded(recipe) }}>
     <div className={`${styles.header} ${isExpanded ? styles.headerExpanded : ''}`}>
-      <h2 className={styles.title}>{recipe.name}</h2>
+      <h2 className={`${styles.title} ${isExpanded ? styles.titleExpanded : ''}`}>{recipe.name}</h2>
       {isExpanded ? (
         <>
-          <Button type="text" onClick={handleEditPressed}>Edit</Button>
+          <Button type="text" color="black" onClick={handleEditPressed}>Edit</Button>
           <Button type="text" color="red" onClick={handleDeletePressed}>Delete</Button>
         </>
       ): null}
