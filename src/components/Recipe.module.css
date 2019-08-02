@@ -10,6 +10,7 @@
 
 .header {
   padding-left: 16px;
+  padding-right: 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -64,4 +65,8 @@
 
 .ingredientsTitle {
   font-size: 1.0em;
+}
+
+.spacer {
+  width: 8px;
 }

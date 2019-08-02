@@ -25,6 +25,7 @@ const Recipe = props => {
       {isExpanded ? (
         <>
           <Button type="text" color="black" onClick={handleEditPressed}>Edit</Button>
+          <div className={styles.spacer} />
           <Button type="text" color="red" onClick={handleDeletePressed}>Delete</Button>
         </>
       ): null}

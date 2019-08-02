@@ -14,11 +14,19 @@
     color: #FFF;
 }
 
-.outlined {
+.text {
+    position: relative;
     color: var(--primary-color);
-    border: 1px solid #00000030;
 }
 
-.text {
-    color: var(--primary-color);
+.text:hover::after {
+    background-color: currentColor;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: .1;
+    content: '';
 }
