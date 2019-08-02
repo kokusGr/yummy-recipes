@@ -40,7 +40,6 @@ const RecipeModal = props => {
   const title = recipe ? 'Edit a recipe ' : 'Add a recipe'
 
   return (
-    <div className={styles.root}>
       <div className={styles.container}>
         <div className={styles.headerContainer}>
           <h2 className={styles.header}>{title}</h2>
@@ -59,7 +58,6 @@ const RecipeModal = props => {
           <Button onClick={onSubmit} type="contained">{title}</Button>
         </div>
       </div>
-    </div>
   )
 }
 

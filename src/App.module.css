@@ -34,14 +34,29 @@
 }
 
 .modalContainer {
-  transform: scale(0, 0);
-  opacity: 0;
   transition-duration: 0.3s;
   transition-timing-function: ease;
-  transition-property: transform, opacity;
+  transform: translateY(100%);
 }
 
 .modalContainerEnter {
-  opacity: 1;
-  transform: scale(1, 1);
+  transform: translateY(0);
 }
+
+
+@media(min-width: 650px) {
+
+  .modalContainer {
+    transform: scale(0, 0);
+    opacity: 0;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-property: transform, opacity;
+  }
+
+  .modalContainerEnter {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
