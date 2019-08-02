@@ -25,7 +25,6 @@
 }
 
 .headerExpanded {
-  border-bottom: 1px solid gray;
   background-color: var(--accent-color-light);
   color: var(--accent-color-dark);
 }
