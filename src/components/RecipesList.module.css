@@ -16,7 +16,8 @@
     padding: 0 16px;
     border-radius: 12px;
     border: none;
-    background-color: greenyellow;
+    background-color: var(--primary-color);
+    color: #FFF;
     display: inline-flex;
     cursor: pointer;
   }

@@ -10,15 +10,15 @@
 }
 
 .contained {
-    background-color: blue;
+    background-color: var(--primary-color);
     color: #FFF;
 }
 
 .outlined {
-    color: blue;
+    color: var(--primary-color);
     border: 1px solid #00000030;
 }
 
 .text {
-    color: blue;
+    color: var(--primary-color);
 }
